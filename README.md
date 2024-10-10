@@ -1,2 +1,3 @@
-# trail-builder
-Collection of digital trail building tools
+# trail_builder
+
+A collection of digital trail builder tiools
