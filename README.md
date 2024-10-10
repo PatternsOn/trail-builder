@@ -1,3 +1,3 @@
-# trail_builder
+# Trail Builder
 
 A collection of digital trail builder tiools
