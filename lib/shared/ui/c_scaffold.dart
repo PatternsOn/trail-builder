@@ -23,7 +23,7 @@ class CScaffold extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 8),
-        child: body,
+        child: SafeArea(child: body),
       ),
       floatingActionButton: floatingActionButton,
       endDrawer: Drawer(

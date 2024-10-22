@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:trail_builder/features/roller_calculator/model/roller.dart';
 
@@ -34,7 +35,7 @@ class RollerCalculatorController extends StateNotifier<Roller> {
       for (int i = 0;
           i <= state.length!;
           i += state.distanceBetweenMeasurePoints!) {
-        double height = _calculateHeight(
+        int height = _calculateHeight(
           length: state.length!,
           distance: i,
           ratio: state.ratio!,
@@ -43,19 +44,28 @@ class RollerCalculatorController extends StateNotifier<Roller> {
         data.add(RollerData(distance: i, height: height));
       }
       state = state.copyWith(data: data);
-
-      print('state = ${state.toString()}');
     }
   }
 
-  double _calculateHeight({
+  void copyRollerData() {
+    StringBuffer buffer = StringBuffer();
+    buffer.writeln("Distance - Height");
+    for (RollerData item in state.data!) {
+      buffer.writeln("${item.distance} - ${item.height}");
+    }
+
+    Clipboard.setData(ClipboardData(text: buffer.toString()));
+  }
+
+  int _calculateHeight({
     required int length,
     required int distance,
     required int ratio,
   }) {
     double height = (-(length / ratio)) * (cos((2 * pi / length) * distance));
     height = height + (length / ratio);
-    return (height / 2).roundToDouble();
+    double result = (height / 2).roundToDouble();
+    return result.toInt();
   }
 }
 

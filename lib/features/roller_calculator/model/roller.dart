@@ -34,7 +34,7 @@ class Roller {
 
 class RollerData {
   final int distance;
-  final double height;
+  final int height;
 
   RollerData({
     required this.distance,

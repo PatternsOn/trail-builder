@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:trail_builder/features/roller_calculator/model/roller.dart';
 import 'package:trail_builder/features/roller_calculator/state/roller-calculator-controller.dart';
+import 'package:trail_builder/shared/style/c_color.dart';
+import 'package:trail_builder/shared/style/c_text.dart';
+import 'package:trail_builder/shared/ui/snack_bars/snack_bar.dart';
 
 class ResultTable extends ConsumerWidget {
   const ResultTable({super.key});
@@ -12,33 +15,66 @@ class ResultTable extends ConsumerWidget {
 
     return data == null
         ? Container()
-        : Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        : Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 16, right: 16),
+                child: Row(
                   children: [
-                    Text("Distance"),
-                    Text("Height"),
+                    Expanded(child: Text("Distance")),
+                    Expanded(child: Text("Height")),
                   ],
                 ),
-                ListView.builder(
-                  itemCount: data!.length,
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(data![index].distance.toString()),
-                        Text(data![index].height.toString()),
-                      ],
-                    );
-                  },
-                ),
-              ],
-            ),
+              ),
+              ListView.builder(
+                itemCount: data.length,
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          padding: const EdgeInsets.only(left: 16),
+                          color: index.isOdd
+                              ? CColor.surfaceBright(context)
+                              : CColor.surfaceDim(context),
+                          child: SelectableText(
+                            data[index].distance.toString(),
+                            style: CText.body.onSurface(context),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Container(
+                          padding: const EdgeInsets.only(right: 16),
+                          color: index.isOdd
+                              ? CColor.surfaceBright(context)
+                              : CColor.surfaceDim(context),
+                          child: SelectableText(
+                            data[index].height.toString(),
+                            style: CText.body.onSurface(context),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        ref
+                            .read(rollerCalculatorController.notifier)
+                            .copyRollerData();
+                        Snackbar.success(context, "Copied to clipboard!");
+                      },
+                      icon: Icon(Icons.copy)),
+                ],
+              )
+            ],
           );
   }
 }
