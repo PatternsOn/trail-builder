@@ -10,6 +10,7 @@ class DistanceBetweenMeasurePointsInput extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return CIntegerFormField(
         label: "Distance between measure points",
+        suffixText: "mm",
         initialValue:
             ref.read(rollerCalculatorController).distanceBetweenMeasurePoints,
         onChanged: (value) => ref

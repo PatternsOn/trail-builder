@@ -193,8 +193,22 @@ extension TextStyleExtension on TextStyle {
     }
   }
 
-  TextStyle _color(Color color) => copyWith(color: color);
-
   ColorScheme _colorScheme(BuildContext context) =>
       Theme.of(context).colorScheme;
+
+  TextStyle get bold => _weight(FontWeight.bold);
+
+  TextStyle get italic => _fontStyle(FontStyle.italic);
+
+  TextStyle get underline => _fontDecoration(TextDecoration.underline);
+
+  TextStyle get lineThrough => _fontDecoration(TextDecoration.lineThrough);
+
+  TextStyle _weight(FontWeight v) => copyWith(fontWeight: v);
+
+  TextStyle _fontStyle(FontStyle i) => copyWith(fontStyle: i);
+
+  TextStyle _fontDecoration(TextDecoration i) => copyWith(decoration: i);
+
+  TextStyle _color(Color c) => copyWith(color: c);
 }

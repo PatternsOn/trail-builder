@@ -11,6 +11,7 @@ class LengthInput extends ConsumerWidget {
     return CIntegerFormField(
         label: "Length",
         initialValue: ref.read(rollerCalculatorController).length,
+        suffixText: "mm",
         onChanged: (value) => ref
             .read(rollerCalculatorController.notifier)
             .updateLength(value ?? ""));

@@ -49,6 +49,12 @@ class RollerCalculatorController extends StateNotifier<Roller> {
 
   void copyRollerData() {
     StringBuffer buffer = StringBuffer();
+
+    buffer.writeln("Roller Calculator Data");
+    buffer.writeln("Length - ${state.length}");
+    buffer.writeln("Ratio - ${state.ratio}");
+
+
     buffer.writeln("Distance - Height");
     for (RollerData item in state.data!) {
       buffer.writeln("${item.distance} - ${item.height}");

@@ -10,12 +10,15 @@ class CIntegerFormField extends StatefulWidget {
   final TextInputType textInputType;
   final int maxLength;
 
+  final String? suffixText;
+
   const CIntegerFormField(
       {super.key,
       required this.label,
       this.initialValue,
       this.onSaved,
       this.onChanged,
+      this.suffixText,
       this.textInputAction,
       this.textInputType = TextInputType.text,
       this.maxLength = 512});
@@ -52,6 +55,7 @@ class _CTextFormFieldState extends State<CIntegerFormField> {
           // border: const OutlineInputBorder(),
           label: Text(widget.label),
           helperText: "",
+          suffixText: widget.suffixText,
         ),
         autovalidateMode: AutovalidateMode.onUserInteraction,
         validator: (value) => validate(value!),
