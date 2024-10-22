@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 class CIntegerFormField extends StatefulWidget {
   final String label;
+  final int? initialValue;
   final ValueChanged<String?>? onSaved;
   final ValueChanged<String?>? onChanged;
   final TextInputAction? textInputAction;
@@ -11,12 +12,13 @@ class CIntegerFormField extends StatefulWidget {
 
   const CIntegerFormField(
       {super.key,
-        required this.label,
-        this.onSaved,
-        this.onChanged,
-        this.textInputAction,
-        this.textInputType = TextInputType.text,
-        this.maxLength = 512});
+      required this.label,
+      this.initialValue,
+      this.onSaved,
+      this.onChanged,
+      this.textInputAction,
+      this.textInputType = TextInputType.text,
+      this.maxLength = 512});
 
   @override
   State<CIntegerFormField> createState() => _CTextFormFieldState();
@@ -28,6 +30,9 @@ class _CTextFormFieldState extends State<CIntegerFormField> {
   @override
   void initState() {
     textEditingController = TextEditingController();
+    if (widget.initialValue != null) {
+      textEditingController.text = widget.initialValue.toString();
+    }
     super.initState();
   }
 

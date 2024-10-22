@@ -8,6 +8,7 @@ class CScaffold extends StatelessWidget {
   final String title;
 
   const CScaffold({
+    super.key,
     required this.title,
     this.floatingActionButton,
     required this.body,
@@ -30,7 +31,6 @@ class CScaffold extends StatelessWidget {
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
-          
               ListTile(
                 leading: Icon(Icons.home),
                 title: Text('Home'),

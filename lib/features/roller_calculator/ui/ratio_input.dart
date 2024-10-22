@@ -3,16 +3,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:trail_builder/features/roller_calculator/state/roller-calculator-controller.dart';
 import 'package:trail_builder/shared/ui/form/c_integer_form_field.dart';
 
-class LengthInput extends ConsumerWidget {
-  const LengthInput({super.key});
+class RatioInput extends ConsumerWidget {
+  const RatioInput({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return CIntegerFormField(
-        label: "Length",
-        initialValue: ref.read(rollerCalculatorController).length,
+        label: "Ratio",
+        initialValue: ref.read(rollerCalculatorController).ratio,
+        textInputType: TextInputType.number,
         onChanged: (value) => ref
             .read(rollerCalculatorController.notifier)
-            .updateLength(value ?? ""));
+            .updateRatio(value ?? ""));
   }
 }
