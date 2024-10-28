@@ -21,8 +21,12 @@ class ResultTable extends ConsumerWidget {
                 padding: const EdgeInsets.only(left: 16, right: 16),
                 child: Row(
                   children: [
-                    Expanded(child: Text("Distance", style: CText.body.bold.onSurface(context))),
-                    Expanded(child: Text("Height", style: CText.body.bold.onSurface(context))),
+                    Expanded(
+                        child: Text("Distance",
+                            style: CText.body.bold.onSurface(context))),
+                    Expanded(
+                        child: Text("Height",
+                            style: CText.body.bold.onSurface(context))),
                   ],
                 ),
               ),
@@ -62,16 +66,28 @@ class ResultTable extends ConsumerWidget {
                 },
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  IconButton(
-                      onPressed: () {
-                        ref
-                            .read(rollerCalculatorController.notifier)
-                            .copyRollerData();
-                        Snackbar.success(context, "Copied to clipboard!");
-                      },
-                      icon: Icon(Icons.copy)),
+                  TextButton.icon(
+                    onPressed: () {
+                      ref
+                          .read(rollerCalculatorController.notifier)
+                          .copyRollerData();
+                      Snackbar.success(context, "Copied to clipboard!");
+                    },
+                    icon: Icon(Icons.copy),
+                    label: Text("Copy"),
+                  ),
+                  TextButton.icon(
+                    onPressed: () {
+                      ref
+                          .read(rollerCalculatorController.notifier)
+                          .copyRollerData();
+                      Snackbar.success(context, "Saved");
+                    },
+                    icon: Icon(Icons.save),
+                    label: Text("Save"),
+                  )
                 ],
               )
             ],
