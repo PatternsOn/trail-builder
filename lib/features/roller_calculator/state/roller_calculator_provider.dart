@@ -1,14 +1,13 @@
 import 'dart:math';
-
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:trail_builder/features/roller_calculator/model/roller.dart';
 import 'package:trail_builder/features/roller_calculator/model/roller_date.dart';
 
 final rollerCalculatorProvider =
-    NotifierProvider<RollerCalculatorNotifier, Roller>(
-      RollerCalculatorNotifier.new,
-    );
+NotifierProvider<RollerCalculatorNotifier, Roller>(
+  RollerCalculatorNotifier.new,
+);
 
 class RollerCalculatorNotifier extends Notifier<Roller> {
   @override
@@ -32,9 +31,9 @@ class RollerCalculatorNotifier extends Notifier<Roller> {
       List<RollerData> data = [];
 
       for (
-        int i = 0;
-        i <= state.length!;
-        i += state.distanceBetweenMeasurePoints!
+      int i = 0;
+      i <= state.length!;
+      i += state.distanceBetweenMeasurePoints!
       ) {
         int height = _calculateHeight(
           length: state.length!,
@@ -65,8 +64,8 @@ class RollerCalculatorNotifier extends Notifier<Roller> {
 
   bool _isFormValid() =>
       state.length != null &&
-      state.ratio != null &&
-      state.distanceBetweenMeasurePoints != null;
+          state.ratio != null &&
+          state.distanceBetweenMeasurePoints != null;
 
   int _calculateHeight({
     required int length,

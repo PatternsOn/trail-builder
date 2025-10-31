@@ -88,16 +88,16 @@ class ResultTable extends ConsumerWidget {
                     icon: Icon(Icons.copy),
                     label: Text("Copy"),
                   ),
-                  TextButton.icon(
-                    onPressed: () {
-                      ref
-                          .read(rollerCalculatorProvider.notifier)
-                          .copyRollerData();
-                      Snackbar.success(context, "Saved");
-                    },
-                    icon: Icon(Icons.save),
-                    label: Text("Save"),
-                  ),
+                  // TextButton.icon(
+                  //   onPressed: () {
+                  //     ref
+                  //         .read(rollerCalculatorProvider.notifier)
+                  //         .copyRollerData();
+                  //     Snackbar.success(context, "Saved");
+                  //   },
+                  //   icon: Icon(Icons.save),
+                  //   label: Text("Save"),
+                  // ),
                 ],
               ),
             ),

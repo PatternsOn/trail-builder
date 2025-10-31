@@ -12,16 +12,17 @@ class CIntegerFormField extends StatefulWidget {
 
   final String? suffixText;
 
-  const CIntegerFormField(
-      {super.key,
-      required this.label,
-      this.initialValue,
-      this.onSaved,
-      this.onChanged,
-      this.suffixText,
-      this.textInputAction,
-      this.textInputType = TextInputType.text,
-      this.maxLength = 512});
+  const CIntegerFormField({
+    super.key,
+    required this.label,
+    this.initialValue,
+    this.onSaved,
+    this.onChanged,
+    this.suffixText,
+    this.textInputAction,
+    this.textInputType = TextInputType.text,
+    this.maxLength = 512,
+  });
 
   @override
   State<CIntegerFormField> createState() => _CTextFormFieldState();
@@ -52,7 +53,6 @@ class _CTextFormFieldState extends State<CIntegerFormField> {
       padding: const EdgeInsets.only(top: 8, bottom: 8, left: 16, right: 16),
       child: TextFormField(
         decoration: InputDecoration(
-          // border: const OutlineInputBorder(),
           label: Text(widget.label),
           helperText: "",
           suffixText: widget.suffixText,
@@ -63,7 +63,6 @@ class _CTextFormFieldState extends State<CIntegerFormField> {
         controller: textEditingController,
         keyboardType: TextInputType.number,
         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-        textInputAction: widget.textInputAction ?? TextInputAction.next,
       ),
     );
   }
