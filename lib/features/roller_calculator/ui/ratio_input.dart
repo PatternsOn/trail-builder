@@ -9,11 +9,13 @@ class RatioInput extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return CIntegerFormField(
-        label: "Ratio",
-        initialValue: ref.read(rollerCalculatorController).ratio,
-        textInputType: TextInputType.number,
-        onChanged: (value) => ref
-            .read(rollerCalculatorController.notifier)
-            .updateRatio(value ?? ""));
+      label: "Ratio",
+      initialValue: ref.read(rollerCalculatorProvider).ratio,
+      textInputType: TextInputType.number,
+      onChanged:
+          (value) => ref
+              .read(rollerCalculatorProvider.notifier)
+              .updateRatio(value ?? ""),
+    );
   }
 }

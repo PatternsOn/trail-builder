@@ -9,11 +9,13 @@ class LengthInput extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return CIntegerFormField(
-        label: "Length",
-        initialValue: ref.read(rollerCalculatorController).length,
-        suffixText: "mm",
-        onChanged: (value) => ref
-            .read(rollerCalculatorController.notifier)
-            .updateLength(value ?? ""));
+      label: "Length",
+      initialValue: ref.read(rollerCalculatorProvider).length,
+      suffixText: "mm",
+      onChanged:
+          (value) => ref
+              .read(rollerCalculatorProvider.notifier)
+              .updateLength(value ?? ""),
+    );
   }
 }

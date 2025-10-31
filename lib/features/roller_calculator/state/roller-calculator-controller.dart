@@ -4,15 +4,16 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:trail_builder/features/roller_calculator/model/roller.dart';
 
-class RollerCalculatorController extends StateNotifier<Roller> {
-  RollerCalculatorController()
-      : super(
-          Roller(
-            length: 5000,
-            ratio: 10,
-            distanceBetweenMeasurePoints: 100,
-          ),
-        );
+final rollerCalculatorProvider =
+    NotifierProvider<RollerCalculatorNotifier, Roller>(
+      RollerCalculatorNotifier.new,
+    );
+
+class RollerCalculatorNotifier extends Notifier<Roller> {
+  @override
+  Roller build() {
+    return Roller(length: 5000, ratio: 10, distanceBetweenMeasurePoints: 100);
+  }
 
   void updateLength(String value) =>
       state = state.copyWith(length: int.parse(value.isEmpty ? '0' : value));
@@ -20,8 +21,10 @@ class RollerCalculatorController extends StateNotifier<Roller> {
   void updateRatio(String value) =>
       state = state.copyWith(ratio: int.parse(value.isEmpty ? '0' : value));
 
-  updateDistanceBetweenMeasurePoints(String value) => state = state.copyWith(
-      distanceBetweenMeasurePoints: int.parse(value.isEmpty ? '0' : value));
+  Roller updateDistanceBetweenMeasurePoints(String value) =>
+      state = state.copyWith(
+        distanceBetweenMeasurePoints: int.parse(value.isEmpty ? '0' : value),
+      );
 
   bool _isFormValid() =>
       state.length != null &&
@@ -32,9 +35,11 @@ class RollerCalculatorController extends StateNotifier<Roller> {
     if (_isFormValid()) {
       List<RollerData> data = [];
 
-      for (int i = 0;
-          i <= state.length!;
-          i += state.distanceBetweenMeasurePoints!) {
+      for (
+        int i = 0;
+        i <= state.length!;
+        i += state.distanceBetweenMeasurePoints!
+      ) {
         int height = _calculateHeight(
           length: state.length!,
           distance: i,
@@ -53,7 +58,6 @@ class RollerCalculatorController extends StateNotifier<Roller> {
     buffer.writeln("Roller Calculator Data");
     buffer.writeln("Length - ${state.length}");
     buffer.writeln("Ratio - ${state.ratio}");
-
 
     buffer.writeln("Distance - Height");
     for (RollerData item in state.data!) {
@@ -74,8 +78,3 @@ class RollerCalculatorController extends StateNotifier<Roller> {
     return result.toInt();
   }
 }
-
-final rollerCalculatorController =
-    StateNotifierProvider<RollerCalculatorController, Roller>((ref) {
-  return RollerCalculatorController();
-});

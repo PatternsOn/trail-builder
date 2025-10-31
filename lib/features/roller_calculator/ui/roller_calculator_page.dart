@@ -25,8 +25,9 @@ class RollerCalculatorPage extends ConsumerWidget {
               padding: const EdgeInsets.all(16.0),
               child: ActionButton(
                 label: "Calculate",
-                onPressed: () =>
-                    ref.read(rollerCalculatorController.notifier).calculate(),
+                onPressed:
+                    () =>
+                        ref.read(rollerCalculatorProvider.notifier).calculate(),
               ),
             ),
             ResultTable(),
