@@ -4,6 +4,8 @@ import 'package:trail_builder/routes/routes.dart';
 import 'package:trail_builder/shared/style/app_theme.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(
     ProviderScope(
       child: const MainApp(),
@@ -18,6 +20,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: router,
+      debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.system,

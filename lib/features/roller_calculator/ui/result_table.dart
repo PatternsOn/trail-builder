@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:trail_builder/features/roller_calculator/model/roller.dart';
-import 'package:trail_builder/features/roller_calculator/state/roller-calculator-controller.dart';
+import 'package:trail_builder/features/roller_calculator/model/roller_date.dart';
+import 'package:trail_builder/features/roller_calculator/state/roller_calculator_provider.dart';
 import 'package:trail_builder/shared/style/c_color.dart';
 import 'package:trail_builder/shared/style/c_text.dart';
 import 'package:trail_builder/shared/ui/snack_bars/snack_bar.dart';
@@ -14,11 +14,11 @@ class ResultTable extends ConsumerWidget {
     final List<RollerData>? data = ref.watch(rollerCalculatorProvider).data;
 
     return data == null
-        ? Container()
+        ? SizedBox.shrink()
         : Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 16, right: 16),
+              padding: const EdgeInsets.only(left: 16, right: 16, bottom: 4),
               child: Row(
                 children: [
                   Expanded(
@@ -45,7 +45,7 @@ class ResultTable extends ConsumerWidget {
                   children: [
                     Expanded(
                       child: Container(
-                        padding: const EdgeInsets.only(left: 16),
+                        padding: const EdgeInsets.only(left: 16, top: 4, bottom: 4),
                         color:
                             index.isOdd
                                 ? CColor.surfaceBright(context)
@@ -58,7 +58,7 @@ class ResultTable extends ConsumerWidget {
                     ),
                     Expanded(
                       child: Container(
-                        padding: const EdgeInsets.only(right: 16),
+                        padding: const EdgeInsets.only(left: 16, top: 4, bottom: 4),
                         color:
                             index.isOdd
                                 ? CColor.surfaceBright(context)
@@ -73,30 +73,33 @@ class ResultTable extends ConsumerWidget {
                 );
               },
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                TextButton.icon(
-                  onPressed: () {
-                    ref
-                        .read(rollerCalculatorProvider.notifier)
-                        .copyRollerData();
-                    Snackbar.success(context, "Copied to clipboard!");
-                  },
-                  icon: Icon(Icons.copy),
-                  label: Text("Copy"),
-                ),
-                TextButton.icon(
-                  onPressed: () {
-                    ref
-                        .read(rollerCalculatorProvider.notifier)
-                        .copyRollerData();
-                    Snackbar.success(context, "Saved");
-                  },
-                  icon: Icon(Icons.save),
-                  label: Text("Save"),
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  TextButton.icon(
+                    onPressed: () {
+                      ref
+                          .read(rollerCalculatorProvider.notifier)
+                          .copyRollerData();
+                      Snackbar.success(context, "Copied to clipboard!");
+                    },
+                    icon: Icon(Icons.copy),
+                    label: Text("Copy"),
+                  ),
+                  TextButton.icon(
+                    onPressed: () {
+                      ref
+                          .read(rollerCalculatorProvider.notifier)
+                          .copyRollerData();
+                      Snackbar.success(context, "Saved");
+                    },
+                    icon: Icon(Icons.save),
+                    label: Text("Save"),
+                  ),
+                ],
+              ),
             ),
           ],
         );

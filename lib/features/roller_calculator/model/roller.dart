@@ -1,3 +1,5 @@
+import 'package:trail_builder/features/roller_calculator/model/roller_date.dart';
+
 class Roller {
   final int? ratio;
   final int? length;
@@ -29,20 +31,5 @@ class Roller {
   @override
   String toString() {
     return 'Roller{data: $data}';
-  }
-}
-
-class RollerData {
-  final int distance;
-  final int height;
-
-  RollerData({
-    required this.distance,
-    required this.height,
-  });
-
-  @override
-  String toString() {
-    return 'RollerData{distance: $distance, height: $height}';
   }
 }

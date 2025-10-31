@@ -15,7 +15,7 @@ class ActionButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        minimumSize: Size(double.infinity, 48), // Set width to infinite and a fixed height
+        minimumSize: Size(double.infinity, 48),
       ),
       child: Text(label),
     );

@@ -39,7 +39,7 @@ class _CTextFormFieldState extends State<CIntegerFormField> {
     super.initState();
   }
 
-  validate(String value) {
+  String? validate(String value) {
     if (value.length > widget.maxLength) {
       return "To long";
     }

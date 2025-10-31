@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trail_builder/shared/style/c_text.dart';
 
 class Snackbar {
-  static success(BuildContext context, String message) {
+  static void success(BuildContext context, String message) {
     if (context.mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(

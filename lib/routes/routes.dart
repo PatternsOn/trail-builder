@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:trail_builder/features/dashboard/ui/dashboard_page.dart';
 import 'package:trail_builder/features/roller_calculator/ui/roller_calculator_page.dart';
 
 final GoRouter router = GoRouter(
@@ -8,7 +7,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
-        return DashboardPage();
+        return RollerCalculatorPage();
       },
       routes: <RouteBase>[
         GoRoute(

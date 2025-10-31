@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:trail_builder/features/roller_calculator/state/roller-calculator-controller.dart';
+import 'package:trail_builder/features/roller_calculator/state/roller_calculator_provider.dart';
 import 'package:trail_builder/features/roller_calculator/ui/distance_between_measure_points_input.dart';
 import 'package:trail_builder/features/roller_calculator/ui/length_input.dart';
 import 'package:trail_builder/features/roller_calculator/ui/ratio_input.dart';
@@ -30,7 +30,10 @@ class RollerCalculatorPage extends ConsumerWidget {
                         ref.read(rollerCalculatorProvider.notifier).calculate(),
               ),
             ),
-            ResultTable(),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: ResultTable(),
+            ),
           ],
         ),
       ),
