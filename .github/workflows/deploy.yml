@@ -3,28 +3,28 @@ name: Deploy Flutter Web to GitHub Pages
 on:
   push:
     branches:
-      - main  # or your default branch
+      - main
 
 permissions:
-  contents: write  # required for gh-pages deployment
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.35.7'  # your version
+          flutter-version: '3.38.3'
 
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Build web
+      - name: Build Flutter web
         run: flutter build web --release --base-href "/${{ github.event.repository.name }}/"
 
       - name: Deploy to GitHub Pages
