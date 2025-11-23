@@ -1,38 +1,231 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
+    <!-- Flutter base href (MUST KEEP) -->
+    <base href="$FLUTTER_BASE_HREF">
 
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
+    <!-- Core metadata -->
+    <meta charset="UTF-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+    <!-- SEO Title -->
+    <title>Pump Track Roller Calculator – Roller Height, Radius & Spacing Tool</title>
 
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="$FLUTTER_BASE_HREF">
+    <!-- SEO Description -->
+    <meta name="description"
+          content="A pump track roller calculator for BMX and MTB trail builders. Calculate roller height, radius, spacing, and smooth transitions for pump track design.">
 
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+    <!-- Keywords -->
+    <meta name="keywords"
+          content="pump track, roller calculator, pumptrack design, BMX rollers, MTB trail building, roller height calculator, spacing calculator, berm radius, trail builder tools">
 
-  <!-- iOS meta tags & icons -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="trail_builder">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+    <!-- Language -->
+    <meta http-equiv="Content-Language" content="en"/>
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+    <!-- iOS / PWA meta tags (KEEP from Flutter template) -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="trail_builder">
+    <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
-  <title>trail_builder</title>
-  <link rel="manifest" href="manifest.json">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png"/>
+
+    <!-- Manifest (KEEP for Flutter/PWA) -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Open Graph metadata -->
+    <meta property="og:title" content="Pump Track Roller Calculator">
+    <meta property="og:description"
+          content="Calculate roller size, height, radius, spacing and smooth transitions for pump track design.">
+    <meta property="og:url" content="https://patternson.github.io/trail-builder/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://patternson.github.io/trail-builder/icons/Icon-512.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pump Track Roller Calculator">
+    <meta name="twitter:description" content="Interactive calculator for pump track geometry and flow optimization.">
+
+    <!-- AI/SEO Structured Data -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Pump Track Roller Calculator",
+            "operatingSystem": "Web",
+            "applicationCategory": "EngineeringApplication",
+            "url": "https://patternson.github.io/trail-builder/",
+            "description": "Interactive calculator for pump track rollers including height, radius, spacing and smooth transition calculations.",
+            "featureList": [
+                "Roller height calculation",
+                "Roller length and spacing",
+                "Transition radius calculation",
+                "Flow optimization"
+            ],
+            "creator": {
+                "@type": "Person",
+                "name": "PatternsOn"
+            }
+        }
+    </script>
+    <style>
+        .seo-footer {
+            position: absolute;
+            left: -9999px;
+            top: -9999px;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body>
-  <script src="flutter_bootstrap.js" async></script>
+    <style>
+        /* ========= SPLASH BASE ========= */
+        #splash {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: system-ui, sans-serif;
+            z-index: 9999;
+            transition: opacity 0.35s ease;
+        }
+
+        #splash img {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 24px;
+        }
+
+        .splash-text {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .splash-accent {
+            margin-top: 16px;
+            width: 50px;
+            height: 6px;
+            border-radius: 4px;
+        }
+
+        /* ========= LIGHT MODE ========= */
+        @media (prefers-color-scheme: light) {
+            #splash {
+                background: #EAE0FF; /* primaryContainer (light) */
+                color: #4F378B;      /* onPrimaryContainer (light) */
+            }
+
+            .splash-text {
+                color: #4F378B; /* onPrimaryContainer */
+            }
+
+            .splash-accent {
+                background: #674FA4; /* primary (light) */
+            }
+        }
+
+        /* ========= DARK MODE ========= */
+        @media (prefers-color-scheme: dark) {
+            #splash {
+                background: #234F24; /* primaryContainer (dark) */
+                color: #BCEFB4;      /* onPrimaryContainer (dark) */
+            }
+
+            .splash-text {
+                color: #BCEFB4; /* onPrimaryContainer */
+            }
+
+            .splash-accent {
+                background: #A1D39A; /* primary (dark) */
+            }
+        }
+
+        /* Hide the SEO footer */
+        .seo-footer {
+            position: absolute;
+            left: -9999px;
+            top: -9999px;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            overflow: hidden;
+        }
+    </style>
+
+    <div id="splash">
+        <img src="assets/loader/pump_track_loader.svg" alt="Loading" />
+        <div class="splash-text">Pump Track Roller Calculator</div>
+        <div class="splash-accent"></div>
+    </div>
+
+    <script src="flutter_bootstrap.js" async></script>
+    <script>
+        window.addEventListener('flutter-first-frame', () => {
+            document.getElementById('splash')?.remove();
+        });
+    </script>
+    <footer class="seo-footer" style="max-width: 800px; margin: 60px auto; padding: 24px; color: #555; font-size: 0.95rem; line-height: 1.6;">
+        <!-- ===== BEGIN SEO CONTENT ===== -->
+        <section id="intro">
+            <h1>Pump Track Roller Calculator</h1>
+            <p>
+                This tool helps trail builders design pump track rollers by calculating
+                roller height, radius, spacing, and smooth transitions. Useful for BMX
+                and MTB pump tracks, dirt jumps and flow trails.
+            </p>
+        </section>
+
+        <section id="how-it-works">
+            <h2>How the Calculator Works</h2>
+            <p>
+                Enter your roller dimensions in meters. The calculator generates
+                recommended geometry using a smooth curve profile that represents how
+                rollers are typically shaped in real pump tracks.
+            </p>
+        </section>
+
+        <section id="features">
+            <h2>Features</h2>
+            <ul>
+                <li>Roller height calculation</li>
+                <li>Roller length and spacing recommendations</li>
+                <li>Transition radius estimation</li>
+                <li>Flow-friendly geometry</li>
+            </ul>
+        </section>
+
+        <section id="use-cases">
+            <h2>Who Is This For?</h2>
+            <p>
+                The calculator is designed for pump track builders, BMX/MTB riders,
+                landscape designers and trail planners who need a fast and reliable way
+                to size rollers for smooth flow and speed control.
+            </p>
+        </section>
+        <section id="how-to-build-a-roller">
+            <h2>How to Build a Pump Track Roller</h2>
+            <p>
+                A pump track roller is a smooth mound of soil shaped to help riders generate
+                speed without pedaling. To build a roller, start by shaping a low and round
+                mound with a gradual approach and exit. The typical height is 0.4–1.0 meters
+                depending on rider skill and track speed.
+            </p>
+            <p>
+                A good roller has a smooth transition, no sharp edges, and a consistent radius.
+                Beginners should aim for longer rollers with gentle slopes, while advanced tracks
+                can use steeper rollers with shorter spacing. The calculator on this page helps
+                estimate roller height, radius, and spacing for predictable and flowy designs.
+            </p>
+        </section>
+        <!-- ===== END SEO CONTENT ===== -->
+    </footer>
+
 </body>
 </html>

@@ -1,0 +1,65 @@
+<svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="200"
+        height="120"
+        viewBox="0 0 200 60">
+
+    <!-- Pumptrack sine wave -->
+    <path id="wave"
+          d="M0 14
+         Q25 8 50 14
+         T100 14
+         T150 14
+         T200 14"
+          stroke="#674FA4"
+          fill="none"
+          stroke-width="3"
+          stroke-linecap="round" />    <!-- Clean 2D MTB silhouette, medium wheels -->
+    <!-- Origin (0,0) is mid between hubs; we offset & scale so wheels ride ON the wave -->
+    <g id="bike"
+       fill="none"
+       stroke="#4F378B"
+       stroke-width="2"
+       stroke-linecap="round"
+       stroke-linejoin="round"
+       transform="translate(0,-13) scale(1.8)">
+
+        <!-- Wheels (medium, symmetric) -->
+        <circle cx="-12" cy="0" r="6" />
+        <circle cx="12" cy="0" r="6" />
+
+        <!-- Frame: ultra-simple diamond / hardtail -->
+
+        <!-- Chainstay: rear hub -> BB area -->
+        <path d="M-12 0 L-3 -2" />
+
+        <!-- Down tube: BB -> head tube -->
+        <path d="M-3 -2 L6 -8" />
+
+        <!-- Top tube: head tube -> seat tube -->
+        <path d="M6 -8 L-4 -9" />
+
+        <!-- Seat tube: seat -> BB -->
+        <path d="M-4 -9 L-3 -2" />
+
+        <!-- Rear triangle closure: seat tube -> rear hub -->
+        <path d="M-4 -9 L-12 0" />
+
+        <!-- Fork: simple, slightly slack, 2D -->
+        <path d="M6 -8 L12 -2" />
+
+        <!-- Handlebar: straight side-view bar -->
+        <path d="M4 -9.5 L8 -9.5" />
+
+        <!-- Saddle: small, straight -->
+        <path d="M-4 -9 L-7 -9" />
+    </g>    <!-- Animate the bike along the wave -->
+    <animateMotion
+            href="#bike"
+            dur="2s"
+            repeatCount="indefinite"
+            rotate="auto">
+        <mpath href="#wave" />
+    </animateMotion>
+</svg>
