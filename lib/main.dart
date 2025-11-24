@@ -6,11 +6,7 @@ import 'package:trail_builder/shared/style/app_theme.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(
-    ProviderScope(
-      child: const MainApp(),
-    ),
-  );
+  runApp(ProviderScope(child: const MainApp()));
 }
 
 class MainApp extends StatelessWidget {

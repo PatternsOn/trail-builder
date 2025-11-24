@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://patternson.github.io/trail-builder/sitemap.xml
