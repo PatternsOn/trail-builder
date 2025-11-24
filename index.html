@@ -1,38 +1,285 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
+    <!-- Flutter base href (MUST KEEP) -->
+    <base href="/trail-builder/">
 
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
+    <!-- Core metadata -->
+    <meta charset="UTF-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://patternson.github.io/trail-builder/">
 
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+    <!-- SEO Title -->
+    <title>Pump Track Roller Calculator – Roller Height, Radius & Spacing Tool</title>
 
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="/trail-builder/">
+    <!-- SEO Description -->
+    <meta name="description"
+          content="A pump track roller calculator for BMX and MTB trail builders. Calculate roller height, radius, spacing, and smooth transitions for pump track design.">
 
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+    <!-- Keywords -->
+    <meta name="keywords"
+          content="pump track, roller calculator, pumptrack design, BMX rollers, MTB trail building, roller height calculator, spacing calculator, trail builder tools, how to build a pump track roller">
 
-  <!-- iOS meta tags & icons -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="trail_builder">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+    <!-- Language -->
+    <meta http-equiv="Content-Language" content="en"/>
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+    <!-- iOS / PWA meta tags (KEEP from Flutter template) -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="trail_builder">
+    <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
-  <title>trail_builder</title>
-  <link rel="manifest" href="manifest.json">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png"/>
+
+    <!-- Manifest (KEEP for Flutter/PWA) -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Open Graph metadata -->
+    <meta property="og:title" content="Pump Track Roller Calculator">
+    <meta property="og:description"
+          content="Calculate roller size, height, radius, spacing and smooth transitions for pump track design.">
+    <meta property="og:url" content="https://patternson.github.io/trail-builder/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://patternson.github.io/trail-builder/icons/Icon-512.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pump Track Roller Calculator">
+    <meta name="twitter:description" content="Interactive calculator for pump track geometry and flow optimization.">
+
+    <!-- AI/SEO Structured Data -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Pump Track Roller Calculator",
+            "operatingSystem": "Web",
+            "applicationCategory": "EngineeringApplication",
+            "url": "https://patternson.github.io/trail-builder/",
+            "description": "Interactive calculator for pump track rollers including height, radius, spacing and smooth transition calculations.",
+            "featureList": [
+                "Roller height calculation",
+                "Roller length and spacing",
+                "Transition radius calculation",
+                "Flow optimization"
+            ],
+            "creator": {
+                "@type": "Person",
+                "name": "PatternsOn"
+            }
+        }
+    </script>
+
+    <style>
+        .seo-footer {
+            position: absolute;
+            left: -9999px;
+            top: -9999px;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            overflow: hidden;
+        }
+    </style>
 </head>
+
 <body>
-  <script src="flutter_bootstrap.js" async></script>
+<style>
+    /* ========= SPLASH BASE ========= */
+    #splash {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: system-ui, sans-serif;
+        z-index: 9999;
+        transition: opacity 0.35s ease;
+    }
+
+    #splash img {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 24px;
+    }
+
+    .splash-text {
+        font-size: 22px;
+        font-weight: 600;
+    }
+
+    .splash-accent {
+        margin-top: 16px;
+        width: 50px;
+        height: 6px;
+        border-radius: 4px;
+    }
+
+    .splash-icon svg {
+        width: 120px;
+        height: 120px;
+        color: inherit; /* Makes stroke follow dark/light mode */
+    }
+
+    /* ========= LIGHT MODE (Flutter ColorScheme.surface / onSurface) ========= */
+    @media (prefers-color-scheme: light) {
+        #splash {
+            background: #F7FBF1; /* surface (light) */
+            color: #191D17; /* onSurface (light) */
+        }
+
+        .splash-text {
+            color: #191D17;
+        }
+
+        .splash-accent {
+            background: #2A6A2F; /* optional: a green accent */
+        }
+    }
+
+    /* ========= DARK MODE (Flutter ColorScheme.surface / onSurface) ========= */
+    @media (prefers-color-scheme: dark) {
+        #splash {
+            background: #101413; /* surface (dark) */
+            color: #E0E4DB; /* onSurface (dark) */
+        }
+
+        .splash-text {
+            color: #E0E4DB;
+        }
+
+        .splash-accent {
+            background: #A1D39A; /* primary (dark) */
+        }
+    }
+
+    /* Hide the SEO footer */
+    .seo-footer {
+        position: absolute;
+        left: -9999px;
+        top: -9999px;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+        overflow: hidden;
+    }
+</style>
+
+<!-- ===== SEO CONTENT (hidden) ===== -->
+<footer class="seo-footer"
+        style="max-width: 800px; margin: 60px auto; padding: 24px; color: #555; font-size: 0.95rem; line-height: 1.6;">
+    <section id="intro">
+        <h1>Pump Track Roller Calculator</h1>
+        <p>This tool helps trail builders design pump track rollers by calculating roller height, radius, spacing, and
+            smooth transitions.</p>
+    </section>
+
+    <section id="how-it-works">
+        <h2>How the Calculator Works</h2>
+        <p>Enter your roller dimensions in meters. The calculator generates recommended geometry using a smooth curve
+            profile.</p>
+    </section>
+
+    <section id="features">
+        <h2>Features</h2>
+        <ul>
+            <li>Roller height calculation</li>
+            <li>Roller spacing recommendations</li>
+            <li>Transition radius estimation</li>
+            <li>Flow-friendly geometry</li>
+        </ul>
+    </section>
+
+    <section id="use-cases">
+        <h2>Who Is This For?</h2>
+        <p>BMX/MTB pump track builders, landscape designers, riders, and trail planners.</p>
+    </section>
+
+    <section id="how-to-build-a-roller">
+        <h2>How to Build a Pump Track Roller</h2>
+        <p>A pump track roller is a smooth mound shaped to help riders generate speed without pedaling.</p>
+        <p>The calculator helps estimate roller dimensions for flowy designs.</p>
+    </section>
+</footer>
+
+<!-- ===== SPLASH ===== -->
+<div id="splash">
+    <div class="splash-icon">
+        <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="200"
+                height="120"
+                viewBox="0 0 200 60">
+
+            <!-- Pumptrack sine wave -->
+            <path id="wave"
+                  d="M0 14
+                   Q25 8 50 14
+                   T100 14
+                   T150 14
+                   T200 14"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-width="3"
+                  stroke-linecap="round"/>
+
+            <!-- Bike silhouette -->
+            <g id="bike"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="2"
+               stroke-linecap="round"
+               stroke-linejoin="round"
+               transform="translate(0,-13) scale(1.8)">
+
+                <!-- Wheels -->
+                <circle cx="-12" cy="0" r="6"/>
+                <circle cx="12" cy="0" r="6"/>
+
+                <!-- Frame -->
+                <path d="M-12 0 L-3 -2"/>   <!-- chainstay -->
+                <path d="M-3 -2 L6 -8"/>    <!-- down tube -->
+                <path d="M6 -8 L-4 -9"/>    <!-- top tube -->
+                <path d="M-4 -9 L-3 -2"/>   <!-- seat tube -->
+                <path d="M-4 -9 L-12 0"/>   <!-- rear triangle -->
+
+                <!-- Fork -->
+                <path d="M6 -8 L12 -2"/>
+
+                <!-- Handlebar -->
+                <path d="M4 -9.5 L8 -9.5"/>
+
+                <!-- Saddle -->
+                <path d="M-4 -9 L-7 -9"/>
+            </g>
+
+            <!-- Motion -->
+            <animateMotion
+                    href="#bike"
+                    dur="2s"
+                    repeatCount="indefinite"
+                    rotate="auto">
+                <mpath href="#wave"/>
+            </animateMotion>
+        </svg>
+    </div>
+
+    <div class="splash-text">Pump Track Roller Calculator</div>
+    <div class="splash-accent"></div>
+</div>
+
+<!-- ===== FLUTTER BOOTSTRAP ===== -->
+<script src="flutter_bootstrap.js" async></script>
+
+<script>
+    window.addEventListener('flutter-first-frame', () => {
+        document.getElementById('splash')?.remove();
+    });
+</script>
+
 </body>
 </html>
