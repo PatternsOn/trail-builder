@@ -12,14 +12,14 @@
          T100 14
          T150 14
          T200 14"
-          stroke="#674FA4"
+          stroke="currentColor"
           fill="none"
           stroke-width="3"
           stroke-linecap="round" />    <!-- Clean 2D MTB silhouette, medium wheels -->
     <!-- Origin (0,0) is mid between hubs; we offset & scale so wheels ride ON the wave -->
     <g id="bike"
        fill="none"
-       stroke="#4F378B"
+       stroke="currentColor"
        stroke-width="2"
        stroke-linecap="round"
        stroke-linejoin="round"

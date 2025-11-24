@@ -8,6 +8,8 @@
     <meta charset="UTF-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://patternson.github.io/trail-builder/">
 
     <!-- SEO Title -->
     <title>Pump Track Roller Calculator – Roller Height, Radius & Spacing Tool</title>
@@ -18,7 +20,7 @@
 
     <!-- Keywords -->
     <meta name="keywords"
-          content="pump track, roller calculator, pumptrack design, BMX rollers, MTB trail building, roller height calculator, spacing calculator, berm radius, trail builder tools">
+          content="pump track, roller calculator, pumptrack design, BMX rollers, MTB trail building, roller height calculator, spacing calculator, trail builder tools, how to build a pump track roller">
 
     <!-- Language -->
     <meta http-equiv="Content-Language" content="en"/>
@@ -70,6 +72,7 @@
             }
         }
     </script>
+
     <style>
         .seo-footer {
             position: absolute;
@@ -82,150 +85,201 @@
         }
     </style>
 </head>
-<body>
-    <style>
-        /* ========= SPLASH BASE ========= */
-        #splash {
-            position: fixed;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-family: system-ui, sans-serif;
-            z-index: 9999;
-            transition: opacity 0.35s ease;
-        }
 
-        #splash img {
-            width: 120px;
-            height: 120px;
-            margin-bottom: 24px;
+<body>
+<style>
+    /* ========= SPLASH BASE ========= */
+    #splash {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: system-ui, sans-serif;
+        z-index: 9999;
+        transition: opacity 0.35s ease;
+    }
+
+    #splash img {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 24px;
+    }
+
+    .splash-text {
+        font-size: 22px;
+        font-weight: 600;
+    }
+
+    .splash-accent {
+        margin-top: 16px;
+        width: 50px;
+        height: 6px;
+        border-radius: 4px;
+    }
+
+    .splash-icon svg {
+        width: 120px;
+        height: 120px;
+        color: inherit; /* Makes stroke follow dark/light mode */
+    }
+
+    /* ========= LIGHT MODE (Flutter ColorScheme.surface / onSurface) ========= */
+    @media (prefers-color-scheme: light) {
+        #splash {
+            background: #F7FBF1; /* surface (light) */
+            color: #191D17; /* onSurface (light) */
         }
 
         .splash-text {
-            font-size: 22px;
-            font-weight: 600;
+            color: #191D17;
         }
 
         .splash-accent {
-            margin-top: 16px;
-            width: 50px;
-            height: 6px;
-            border-radius: 4px;
+            background: #2A6A2F; /* optional: a green accent */
+        }
+    }
+
+    /* ========= DARK MODE (Flutter ColorScheme.surface / onSurface) ========= */
+    @media (prefers-color-scheme: dark) {
+        #splash {
+            background: #101413; /* surface (dark) */
+            color: #E0E4DB; /* onSurface (dark) */
         }
 
-        /* ========= LIGHT MODE ========= */
-        @media (prefers-color-scheme: light) {
-            #splash {
-                background: #EAE0FF; /* primaryContainer (light) */
-                color: #4F378B;      /* onPrimaryContainer (light) */
-            }
-
-            .splash-text {
-                color: #4F378B; /* onPrimaryContainer */
-            }
-
-            .splash-accent {
-                background: #674FA4; /* primary (light) */
-            }
+        .splash-text {
+            color: #E0E4DB;
         }
 
-        /* ========= DARK MODE ========= */
-        @media (prefers-color-scheme: dark) {
-            #splash {
-                background: #234F24; /* primaryContainer (dark) */
-                color: #BCEFB4;      /* onPrimaryContainer (dark) */
-            }
-
-            .splash-text {
-                color: #BCEFB4; /* onPrimaryContainer */
-            }
-
-            .splash-accent {
-                background: #A1D39A; /* primary (dark) */
-            }
+        .splash-accent {
+            background: #A1D39A; /* primary (dark) */
         }
+    }
 
-        /* Hide the SEO footer */
-        .seo-footer {
-            position: absolute;
-            left: -9999px;
-            top: -9999px;
-            width: 1px;
-            height: 1px;
-            opacity: 0;
-            overflow: hidden;
-        }
-    </style>
+    /* Hide the SEO footer */
+    .seo-footer {
+        position: absolute;
+        left: -9999px;
+        top: -9999px;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+        overflow: hidden;
+    }
+</style>
 
-    <div id="splash">
-        <img src="assets/loader/pump_track_loader.svg" alt="Loading" />
-        <div class="splash-text">Pump Track Roller Calculator</div>
-        <div class="splash-accent"></div>
+<!-- ===== SEO CONTENT (hidden) ===== -->
+<footer class="seo-footer"
+        style="max-width: 800px; margin: 60px auto; padding: 24px; color: #555; font-size: 0.95rem; line-height: 1.6;">
+    <section id="intro">
+        <h1>Pump Track Roller Calculator</h1>
+        <p>This tool helps trail builders design pump track rollers by calculating roller height, radius, spacing, and
+            smooth transitions.</p>
+    </section>
+
+    <section id="how-it-works">
+        <h2>How the Calculator Works</h2>
+        <p>Enter your roller dimensions in meters. The calculator generates recommended geometry using a smooth curve
+            profile.</p>
+    </section>
+
+    <section id="features">
+        <h2>Features</h2>
+        <ul>
+            <li>Roller height calculation</li>
+            <li>Roller spacing recommendations</li>
+            <li>Transition radius estimation</li>
+            <li>Flow-friendly geometry</li>
+        </ul>
+    </section>
+
+    <section id="use-cases">
+        <h2>Who Is This For?</h2>
+        <p>BMX/MTB pump track builders, landscape designers, riders, and trail planners.</p>
+    </section>
+
+    <section id="how-to-build-a-roller">
+        <h2>How to Build a Pump Track Roller</h2>
+        <p>A pump track roller is a smooth mound shaped to help riders generate speed without pedaling.</p>
+        <p>The calculator helps estimate roller dimensions for flowy designs.</p>
+    </section>
+</footer>
+
+<!-- ===== SPLASH ===== -->
+<div id="splash">
+    <div class="splash-icon">
+        <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="200"
+                height="120"
+                viewBox="0 0 200 60">
+
+            <!-- Pumptrack sine wave -->
+            <path id="wave"
+                  d="M0 14
+                   Q25 8 50 14
+                   T100 14
+                   T150 14
+                   T200 14"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-width="3"
+                  stroke-linecap="round"/>
+
+            <!-- Bike silhouette -->
+            <g id="bike"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="2"
+               stroke-linecap="round"
+               stroke-linejoin="round"
+               transform="translate(0,-13) scale(1.8)">
+
+                <!-- Wheels -->
+                <circle cx="-12" cy="0" r="6"/>
+                <circle cx="12" cy="0" r="6"/>
+
+                <!-- Frame -->
+                <path d="M-12 0 L-3 -2"/>   <!-- chainstay -->
+                <path d="M-3 -2 L6 -8"/>    <!-- down tube -->
+                <path d="M6 -8 L-4 -9"/>    <!-- top tube -->
+                <path d="M-4 -9 L-3 -2"/>   <!-- seat tube -->
+                <path d="M-4 -9 L-12 0"/>   <!-- rear triangle -->
+
+                <!-- Fork -->
+                <path d="M6 -8 L12 -2"/>
+
+                <!-- Handlebar -->
+                <path d="M4 -9.5 L8 -9.5"/>
+
+                <!-- Saddle -->
+                <path d="M-4 -9 L-7 -9"/>
+            </g>
+
+            <!-- Motion -->
+            <animateMotion
+                    href="#bike"
+                    dur="2s"
+                    repeatCount="indefinite"
+                    rotate="auto">
+                <mpath href="#wave"/>
+            </animateMotion>
+        </svg>
     </div>
 
-    <script src="flutter_bootstrap.js" async></script>
-    <script>
-        window.addEventListener('flutter-first-frame', () => {
-            document.getElementById('splash')?.remove();
-        });
-    </script>
-    <footer class="seo-footer" style="max-width: 800px; margin: 60px auto; padding: 24px; color: #555; font-size: 0.95rem; line-height: 1.6;">
-        <!-- ===== BEGIN SEO CONTENT ===== -->
-        <section id="intro">
-            <h1>Pump Track Roller Calculator</h1>
-            <p>
-                This tool helps trail builders design pump track rollers by calculating
-                roller height, radius, spacing, and smooth transitions. Useful for BMX
-                and MTB pump tracks, dirt jumps and flow trails.
-            </p>
-        </section>
+    <div class="splash-text">Pump Track Roller Calculator</div>
+    <div class="splash-accent"></div>
+</div>
 
-        <section id="how-it-works">
-            <h2>How the Calculator Works</h2>
-            <p>
-                Enter your roller dimensions in meters. The calculator generates
-                recommended geometry using a smooth curve profile that represents how
-                rollers are typically shaped in real pump tracks.
-            </p>
-        </section>
+<!-- ===== FLUTTER BOOTSTRAP ===== -->
+<script src="flutter_bootstrap.js" async></script>
 
-        <section id="features">
-            <h2>Features</h2>
-            <ul>
-                <li>Roller height calculation</li>
-                <li>Roller length and spacing recommendations</li>
-                <li>Transition radius estimation</li>
-                <li>Flow-friendly geometry</li>
-            </ul>
-        </section>
-
-        <section id="use-cases">
-            <h2>Who Is This For?</h2>
-            <p>
-                The calculator is designed for pump track builders, BMX/MTB riders,
-                landscape designers and trail planners who need a fast and reliable way
-                to size rollers for smooth flow and speed control.
-            </p>
-        </section>
-        <section id="how-to-build-a-roller">
-            <h2>How to Build a Pump Track Roller</h2>
-            <p>
-                A pump track roller is a smooth mound of soil shaped to help riders generate
-                speed without pedaling. To build a roller, start by shaping a low and round
-                mound with a gradual approach and exit. The typical height is 0.4–1.0 meters
-                depending on rider skill and track speed.
-            </p>
-            <p>
-                A good roller has a smooth transition, no sharp edges, and a consistent radius.
-                Beginners should aim for longer rollers with gentle slopes, while advanced tracks
-                can use steeper rollers with shorter spacing. The calculator on this page helps
-                estimate roller height, radius, and spacing for predictable and flowy designs.
-            </p>
-        </section>
-        <!-- ===== END SEO CONTENT ===== -->
-    </footer>
+<script>
+    window.addEventListener('flutter-first-frame', () => {
+        document.getElementById('splash')?.remove();
+    });
+</script>
 
 </body>
 </html>
